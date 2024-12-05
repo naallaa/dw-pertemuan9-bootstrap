@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan CDN jQuery</title>
+</head>
+<body>
+    
+    <button id="viewTEXT">Tampilkan Teks</button>
+    <button id="hideTEXT">Sembunyikan Teks</button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ratione, non et harum rerum explicabo saepe laboriosam odio natus amet cupiditate voluptatum voluptatem atque exercitationem distinctio illum quasi voluptate sed earum aliquid labore? Provident itaque sint quis officia eligendi id maiores ipsam necessitatibus accusantium perferendis tempora reprehenderit consequatur voluptatum, in maxime nisi eius veritatis quam! Placeat fugit exercitationem doloremque sit soluta deleniti ipsa quidem obcaecati blanditiis sequi optio pariatur modi dolore iure vitae laboriosam mollitia vero perspiciatis, similique dignissimos amet tenetur cumque officiis quod? Reiciendis necessitatibus eos recusandae quibusdam voluptates inventore consectetur corporis temporibus explicabo odit culpa quod atque modi unde cupiditate earum itaque, praesentium laborum, minima iste labore, ipsa deleniti! Explicabo ad eius sapiente maiores dolorum fuga consequatur, delectus ipsa hic non praesentium quisquam reiciendis earum, officia vel voluptas ea, molestiae eum quam qui rerum expedita in autem totam. Minus, molestias dolor ut nostrum consequatur, maxime, itaque recusandae doloremque fugiat culpa distinctio. Vel eos saepe deleniti laboriosam illo, minus amet assumenda nostrum maiores provident sed doloremque alias odit consequuntur vero tenetur porro asperiores voluptates beatae nihil officia quia! Cupiditate quia amet velit nesciunt placeat pariatur tempora libero, corrupti cumque, maxime, ullam incidunt dolorem. Pariatur neque adipisci voluptates! Explicabo nihil excepturi, temporibus quos, ex non ullam, omnis nesciunt atque illum molestiae cum exercitationem a quia laborum sed ducimus vero blanditiis dolor expedita autem? Perferendis reprehenderit sapiente aperiam et iste accusantium voluptatibus qui nulla dicta, repellendus facilis praesentium illum earum quidem pariatur ratione ut perspiciatis sint aut velit in? Cupiditate veniam neque consequatur vitae omnis quasi eius, at sed nesciunt voluptatem doloribus laudantium quae odio expedita dicta natus, maiores animi, ratione enim tempora quas perferendis provident sapiente? Neque exercitationem corporis beatae praesentium repellendus ipsa obcaecati omnis est numquam fugit vel quis consectetur assumenda eligendi impedit temporibus, unde minima perferendis iusto aperiam?</p>
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+           $('p').hide()
+           $('#hideTEXT').hide()
+           $('#viewTEXT').on('click', function(){
+            $('p').show(500)
+            $(this).hide()
+            $('#hideTEXT').show()
+           })
+        
+            $('#hideTEXT').on('click', function(){
+            $('p').hide()
+            $(this).hide()
+            $('#viewTEXT').show()
+           }) 
+        })
+       
+    </script>
+</body>
+</html>
