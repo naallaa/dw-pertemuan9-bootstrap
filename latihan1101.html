@@ -78,16 +78,15 @@
                 let nilaiF = 0
                 if(pl=="c2f"){
                     nilaiC = $("#nCel").val()
-                    nilaiF = nilaiC * 9/5 + 32
+                    nilaiF = (nilaiC * 9/5) + 32
                     $("#nFah").val(nilaiF)
                     hsl = "<h3>Konversi Suhu dari Celcius ke Fahrenheit</h3>"
                     hsl += "°F = (°C x 9/5) + 32<br>"
                     hsl += "&nbsp;&nbsp;&nbsp;= ("+nilaiC +" x 9/5) + 32<br>"
                     hsl += "&nbsp;&nbsp;&nbsp;= "+nilaiF 
                 }else{
-                    nilaiF
-                    // C = (°F - 32) x 5/9 = $("#nFah").val()
-                    nilaiC = nilaiF - 32 * 5/9
+                    nilaiF = $("#nFah").val()
+                    nilaiC = (nilaiF - 32) * 5/9
                     $("#nCel").val(nilaiC)
                     hsl = "<h3>Konversi Suhu dari Fahrenheit ke Celcius</h3>"
                     hsl += "°C = (°F - 32) x 5/9 <br>"
