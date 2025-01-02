@@ -21,6 +21,21 @@
         .bingkai{
             border-radius: 30px 0px;
         }
+
+        .produk {
+            margin: 30px 0px;
+           
+        }
+
+        .produkitem{
+            height: 200px;
+            text-align: center;
+            object-fit: cover;
+        }
+
+        .card-title{
+            font-size: 16px;
+        }
     </style>
   </head>
   <body>
@@ -52,7 +67,13 @@
             </div>
         </div>
     </div>
-    <div class="container"><a name="produk"></a><h3>List Produk</h3></div>
+    <div class="container">
+        <div class="produk">
+            <a name="produk"></a>
+            <h3>List Produk</h3>
+            <div class="listproduk"></div>
+    </div>
+</div>
     <div class="container">
         <footer class="tx-muted" style="clear:both;">
         <hr>
@@ -68,8 +89,37 @@
             var urlAPI = "https://apimhstiki.ptov.my.id/"
             var NIM = "2401010593"
             var SS = urlAPI+"slideshow/"+NIM
+            var LP = urlAPI+NIM+"/produk/list"
             console.log(SS)
+            $.ajax({
+                url:LP,
+                method: 'GET',
+                dataType: 'json',
+                success:function(lsproduk){
+                    if(lsproduk && lsproduk.error == 0 ){
+                        let txProduk = ""
 
+                         lsproduk.produk.forEach(function(lsdata){
+                            txProduk += `<div class="card" style="width: 15.5rem; float: left; margin: 15px;">
+                    <img src="${lsdata.IMG}" class="card-img-top produkitem" alt="${lsdata.ITEM}">
+                    <div class="card-body">
+                      <h5 class="card-title">${lsdata.ITEM}</h5>
+                      <p class="card-text">Rp. ${lsdata.HRGJUAL} ,-</p>
+                      <a href="#" class="btn btn-primary">Beli</a>
+                      <a href="#" class="btn btn-warning">Detail</a>
+                    </div>
+                  </div>`
+                         })
+                         $(".listproduk").html(txProduk)
+
+                    }
+                },
+                error:function(){
+                    console.log("Error Load Data")
+                }
+            })
+
+            
             $.ajax({
                 url: SS,
                 method: 'GET',

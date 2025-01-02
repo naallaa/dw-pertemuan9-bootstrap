@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Data Testimoni</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+        <h1>List Data Testimoni</h1>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Email</th>
+                <th scope="col">Testimoni</th>
+                <th scope="col">IP</th>
+                <th scope="col">Opsi</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+         $(function(){
+            var urlAPI = "https://apimhstiki.ptov.my.id/"
+            var NIM = "2401010593"
+            var SS = urlAPI+"slideshow/"+NIM
+            var LP = urlAPI+NIM+"/produk/list"
+            var TS = urlAPI+"testi-"+NIM+"/read"
+            console.log(SS)
+            $.ajax({
+                url:TS,
+                method: 'GET',
+                dataType: 'json',
+                success:function(testimoni){
+                    if(testimoni && testimoni.error == 4 ){
+                        let txTesti = ""
+
+                         testimoni.TESTI.forEach(function(tsdata){
+                            txTesti += `<tr>
+                <td>${tsdata.NAMA}</td>
+                <td>${tsdata.EMAIL}</td>
+                <td>${tsdata.TESTI}</td>
+                <td>${tsdata.GRAVATAR}</td>
+                <td><a class="btn btn-danger btn-sm"> Hapus </a></td>
+              </tr>`
+                         })
+                         $("tbody").html(txTesti)
+
+                    }
+                },
+                error:function(){
+                    console.log("Error Load Data")
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
